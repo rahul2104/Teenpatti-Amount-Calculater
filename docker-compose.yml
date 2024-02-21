@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  client:
+    container_name: myvcord-web
+    build:
+      context: ./
+      dockerfile: dockerfile
+    environment:
+      HOST: 0.0.0.0
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/src/myvcard/app/web
+    working_dir: /src/client/app
+    env_file:
+      - ./.env

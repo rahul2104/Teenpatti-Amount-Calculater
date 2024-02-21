@@ -135,7 +135,7 @@ console.log("login process",process.env)
               {/*<form>*/}
                 <div className="auth_head margin-b">
                   <h3>Sign in</h3>
-                  <p>Use your Contacts Account</p>
+                  <p>Enter your email & password</p>
                 </div>
                 <div
                   className={`form-group ${state.emailError ? 'error' : ''}`}

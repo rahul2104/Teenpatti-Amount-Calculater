@@ -17,7 +17,8 @@ export default function Layout ({title = "Teen Patti", notFooter=false , notHead
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
-        <link rel="icon" href={`/favicon.ico`} />
+          <base href = {BASE_PATH}/>
+          <link rel="icon" href={`/favicon.ico`} />
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#d9fff2" />
           <meta name="description" content="Teen Patti amount calculater"/>

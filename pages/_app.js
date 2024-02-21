@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import '../styles/QRCodeScanner.css';
 import ReactGA from 'react-ga4';
 import {useEffect} from "react";
 // ReactGA.initialize('');

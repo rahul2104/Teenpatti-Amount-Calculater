@@ -192,7 +192,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background: url("/images/mobile-bg.png") no-repeat !important;
+  /*background: url("/images/mobile-bg.png") no-repeat !important;*/
 }
 .container.detil_v_box {
   height: calc(100% - 272px);
@@ -602,7 +602,8 @@ position: relative;
   height: 178px;
   border-radius: 10px 10px 0px 0px;
   display: block;
-  background: url("/images/bg-desktop.png") no-repeat !important;
+  background: #d9fff2;
+  /*background: url("/images/bg-desktop.png") no-repeat !important;*/
 }
 .cm-container {
   width: 100%;
@@ -739,13 +740,14 @@ span.dot3 {
 /* .......................login form...................................... */
 
 .login-body {
-  background: url("/images/login-bg.png") no-repeat center !important;
+  /*background: url("/images/login-bg.png") no-repeat center !important;*/
   background-size: cover;
   background-attachment: fixed;
   width: 100%;
   overflow: hidden;
   box-sizing: inherit;
   min-height: 100vh;
+  background: #d9fff2;
 }
 
 #container {
@@ -1099,7 +1101,7 @@ section {
     background-size: cover;
     background-repeat: no-repeat;
     display: block;
-    background: url("/images/mobile-bg.png") no-repeat !important;
+    /*background: url("/images/mobile-bg.png") no-repeat !important;*/
   }
   .upper-container.phone-view{height: 280px;}
   .nav-pills .nav-item .nav-link {
@@ -1210,8 +1212,9 @@ position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background: url("/images/dashboard_bg.png") no-repeat !important;
+  /*background: url("/images/dashboard_bg.png") no-repeat !important;*/
   box-shadow: 0px 3px 6px #00000054;
+  background: #d9fff2;
 }
 .box_1620.container {
   width: 100% !important;

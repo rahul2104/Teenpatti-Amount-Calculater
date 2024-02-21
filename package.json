@@ -12,18 +12,18 @@
     "deploy": "next start -p 3000"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "bootstrap": "^5.3.2",
-    "dexie": "^3.2.4",
+    "axios": "^1.6.7",
+    "bootstrap": "^5.3.3",
+    "dexie": "^3.2.5",
     "dexie-react-hooks": "^1.1.7",
-    "next": "^14.0.4",
+    "next": "^14.1.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.9.1",
+    "react-bootstrap": "^2.10.1",
     "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
     "react-ga4": "^2.1.0",
-    "react-icons": "^4.12.0",
+    "react-icons": "^5.0.1",
     "react-js-pagination": "^3.0.3",
     "react-modal": "^3.16.1",
     "react-nextjs-toast": "^1.2.5",
@@ -33,7 +33,7 @@
     "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
-    "eslint": "8.55.0",
-    "eslint-config-next": "^14.0.4"
+    "eslint": "8.56.0",
+    "eslint-config-next": "^14.1.0"
   }
 }

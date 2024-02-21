@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Layout from '../../layout/main';
 import { Mail, Phone, Skype } from '../../public/Svg';
 import { useEffect, useReducer, useState, useRef } from 'react';
-import { userService } from '../../services/userService';
 import { toast } from 'react-nextjs-toast';
 import QRCode from 'react-qr-code';
 
@@ -39,56 +38,7 @@ export default function Index() {
   );
 
   useEffect( () => {
-    userService.getUserDetails({})
-        .then((data)=> {
-          console.log('response==', data);
-          if (data.statusCode == 1) {
-            setState({
-              userDetails: data.responseData.result,
-              mediaPath: data.responseData.mediaPath,
-              employeeId: data.responseData.result.employeeId,
-              name: data.responseData.result.name,
-              email: data.responseData.result.email,
-              designation: data.responseData.result.designation,
-              companyName: data.responseData.result.companyName,
-              aboutUs: data.responseData.result.aboutUs,
-              workEmail: data.responseData.result.workEmail,
-              phoneNo: data.responseData.result.phoneNo,
-              whatsApp: data.responseData.result.whatsApp,
-              skype: data.responseData.result.skype,
-              website: data.responseData.result.website,
-              instagram: data.responseData.result.instagram,
-              facebook: data.responseData.result.facebook,
-              linkedin: data.responseData.result.linkedin,
-              twitter: data.responseData.result.twitter,
-              googleMap: data.responseData.result.googleMap,
-              hangouts: data.responseData.result.hangouts,
-              youtube: data.responseData.result.youtube,
-              snapchat: data.responseData.result.snapchat,
-              tiktok: data.responseData.result.tiktok,
-              pinterest: data.responseData.result.pinterest,
-              profileImage: data.responseData.result.profileImage,
-            });
-            if (
-                data.responseData.result.profileImage &&
-                data.responseData.result.profileImage != ''
-            ) {
-              setState({
-                profileImagePrev:
-                    data.responseData.mediaPath + data.responseData.result.profileImage,
-              });
-            }
-          }else if (data.statusCode === 0&&data?.error?.errorCode==2) {
-              sessionStorage.removeItem('accessToken');
-              localStorage.clear();
-          }else{
-            toast.notify(data.error.responseMessage, {
-              duration: 3,
-              type: 'error',
-              title: 'Error!!',
-            });
-          }
-        })
+
   }, []);
   let [flipped, setStateFlip] = useState(true);
   const increment = useRef(null);

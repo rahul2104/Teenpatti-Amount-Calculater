@@ -1,0 +1,21 @@
+{
+  "name": "Teen Patti",
+  "short_name": "Teen Patti",
+  "icons": [
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#d9fff2",
+  "background_color": "#d9fff2",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -4,6 +4,10 @@ import { Fragment } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import {ToastContainer} from "react-nextjs-toast";
+import getConfig from 'next/config'
+
+const {publicRuntimeConfig,serverRuntimeConfig} = getConfig()
+const {BASE_PATH,AUTHORISATION} = publicRuntimeConfig
 
 export default function Layout ({title = "Teen Patti", notFooter=false , notHeader, isContact=false, isAppPage,children }){
   // console.log(notFooter , notHeader,'notFooter , notHeader');

@@ -1,7 +1,11 @@
+import getConfig from 'next/config'
+const {publicRuntimeConfig,serverRuntimeConfig} = getConfig();
+const {BASE_PATH,AUTHORISATION} = publicRuntimeConfig;
+
 export const uiConfig = firebase => {
     return {
         signInFlow: 'popup',
-        signInSuccessUrl: '/auth/login',
+        signInSuccessUrl: BASE_PATH+'/auth/login',
         // tosUrl: '/terms-of-service',
         // privacyPolicyUrl: '/privacy-policy',
         signInOptions: [

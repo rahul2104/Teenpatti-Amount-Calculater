@@ -49,7 +49,7 @@ const Header = () => {
         <div className="container navbar-container">
           <Navbar.Brand href="#home">
             {/*<Logo />*/}
-            <Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>
+            {/*<Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>*/}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 

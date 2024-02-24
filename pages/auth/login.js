@@ -5,10 +5,9 @@ import Layout from '../../layout/main';
 import { useRouter } from 'next/router'
 import {authService} from "../../services/authService";
 import { toast, ToastContainer } from 'react-nextjs-toast';
-import { firebase } from '../../api/firebaseApp';
+import {firebase, manageSession} from '../../api/firebaseApp';
 import { uiConfig } from '../../config/firebaseAuthUI.config';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-
 
 var mailValidation =
   /(([a-zA-Z0-9\-?\.?]+)@(([a-zA-Z0-9\-_]+\.)+)([a-z]{2,3}))+$/;
@@ -119,14 +118,19 @@ export default function Login() {
   };
 
   useEffect(() => {
-    let accessToken = sessionStorage.getItem('accessToken')
-    if (accessToken) {
-      router.push('/dashboard', undefined, { shallow: true })
-    }
+    manageSession()
+    .then(function (user){
+      //console.log("res",user);
+      if(user){
+        router.push('/dashboard', undefined, { shallow: true })
+      }
+    })
   }, [])
-console.log("login process",process.env)
+
+
+
   return (
-    <Layout notFooter={true} notHeader={true}>
+    <Layout notFooter={false} notHeader={true}>
       <div className="login-body ">
         <div id="container">
           <div id="section-wrapper">
@@ -137,73 +141,73 @@ console.log("login process",process.env)
               </span>
             </section>
             <div className="auth_form  mt-4  ">
-              {/*<form>*/}
+
                 <div className="auth_head margin-b">
                   <h3>Sign in</h3>
-                  <p>Enter your email & password</p>
+                  {/*<p>Enter your email & password</p>*/}
                 </div>
               <StyledFirebaseAuth uiConfig={authConfig} firebaseAuth={firebase.auth()} />
-                <div
-                  className={`form-group ${state.emailError ? 'error' : ''}`}
-                >
-                  <input
-                    maxLength="70"
-                    className="form-control"
-                    type="text"
-                    name="email"
-                    placeholder="Email Address"
-                    value={state.email}
-                    onChange={handleOnChange}
-                  />
+                {/*<div*/}
+                {/*  className={`form-group ${state.emailError ? 'error' : ''}`}*/}
+                {/*>*/}
+                {/*  <input*/}
+                {/*    maxLength="70"*/}
+                {/*    className="form-control"*/}
+                {/*    type="text"*/}
+                {/*    name="email"*/}
+                {/*    placeholder="Email Address"*/}
+                {/*    value={state.email}*/}
+                {/*    onChange={handleOnChange}*/}
+                {/*  />*/}
 
-                  {state.emailError ? (
-                    <small className="small red">{state.emailError}</small>
-                  ) : (
-                    ''
-                  )}
-                </div>
-                <div
-                  className={`input-w-icon form-group ${
-                    state.passwordError ? 'error' : ''
-                  }`}
-                >
-                  <input
-                    type={state.showPassword ? 'password' : 'text'}
-                    name="password"
-                    value={state.password}
-                    onChange={handleOnChange}
-                    placeholder="Password"
-                    className="form-control"
-                    maxLength="70"
-                  />
+                {/*  {state.emailError ? (*/}
+                {/*    <small className="small red">{state.emailError}</small>*/}
+                {/*  ) : (*/}
+                {/*    ''*/}
+                {/*  )}*/}
+                {/*</div>*/}
+                {/*<div*/}
+                {/*  className={`input-w-icon form-group ${*/}
+                {/*    state.passwordError ? 'error' : ''*/}
+                {/*  }`}*/}
+                {/*>*/}
+                {/*  <input*/}
+                {/*    type={state.showPassword ? 'password' : 'text'}*/}
+                {/*    name="password"*/}
+                {/*    value={state.password}*/}
+                {/*    onChange={handleOnChange}*/}
+                {/*    placeholder="Password"*/}
+                {/*    className="form-control"*/}
+                {/*    maxLength="70"*/}
+                {/*  />*/}
 
-                  <span
-                    className="rt-icon"
-                    onClick={(e) =>
-                      setState({
-                        showPassword: !state.showPassword,
-                      })
-                    }
-                  >
-                    {state.showPassword ? <CloseEyeIcon /> : <EyeIcon />}
-                  </span>
-                  {state.passwordError ? (
-                    <small className="small red">{state.passwordError}</small>
-                  ) : (
-                    ''
-                  )}
-                </div>
+                {/*  <span*/}
+                {/*    className="rt-icon"*/}
+                {/*    onClick={(e) =>*/}
+                {/*      setState({*/}
+                {/*        showPassword: !state.showPassword,*/}
+                {/*      })*/}
+                {/*    }*/}
+                {/*  >*/}
+                {/*    {state.showPassword ? <CloseEyeIcon /> : <EyeIcon />}*/}
+                {/*  </span>*/}
+                {/*  {state.passwordError ? (*/}
+                {/*    <small className="small red">{state.passwordError}</small>*/}
+                {/*  ) : (*/}
+                {/*    ''*/}
+                {/*  )}*/}
+                {/*</div>*/}
 
-                <button
-                  className="auth_btn margin-b padding-b"
-                  onClick={loginSubmit}
-                >
-                  SIGN IN
-                </button>
-                <Link href="/auth/forgot" className="forget-pass">
-                  Forgot password?
-                </Link>
-              {/*</form>*/}
+                {/*<button*/}
+                {/*  className="auth_btn margin-b padding-b"*/}
+                {/*  onClick={loginSubmit}*/}
+                {/*>*/}
+                {/*  SIGN IN*/}
+                {/*</button>*/}
+                {/*<Link href="/auth/forgot" className="forget-pass">*/}
+                {/*  Forgot password?*/}
+                {/*</Link>*/}
+
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 module.exports = {
   // basePath: process.env.BASE_PATH,
-  output: 'export',
-  reactStrictMode: true,
+  // output: 'export',
+  reactStrictMode: false,
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
     // Will only be available on the server side

@@ -1,22 +1,15 @@
 import {useState, useEffect, useReducer} from 'react';
 import { Logo } from '../public/Svg';
-
 import { Navbar, Nav, Link } from 'react-bootstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router'
-
-import {toast} from "react-nextjs-toast";
+import {manageSession,sessionSignOut} from "../api/firebaseApp";
+import Image from "next/image";
 
 const Header = () => {
   let [bgcolor, setBgcolor] = useState(1);
-  const [state, setState] = useReducer(
-      (state, newState) => ({ ...state, ...newState }),
-      {
-        userDetails: {},
-        mediaPath:'',
-      }
-  );
+  let [user,setUser]=useState({});
+
   const router = useRouter()
   const listenScrollEvent = (e) => {
     if (window.scrollY > 40) {
@@ -30,18 +23,22 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    let accessToken = sessionStorage.getItem('accessToken')
-    if (!accessToken) {
-      router.push('/auth/login', undefined, { shallow: true })
-    }else{
-
-    }
+    manageSession()
+        .then(function (user) {
+          if (!user) {
+            router.push('/auth/login', undefined, {shallow: true})
+          } else {
+            console.log("user", user);
+            setUser(user);
+          }
+        })
   }, [])
 
   const handleLogout = () => {
-    sessionStorage.removeItem('accessToken');
-    localStorage.clear();
-    router.push('/auth/login', undefined, { shallow: true })
+    let res = sessionSignOut();
+    if(res){
+      router.push('/auth/login', undefined, { shallow: true })
+    }
   }
 
 
@@ -51,7 +48,8 @@ const Header = () => {
       <Navbar collapseOnSelect expand="md">
         <div className="container navbar-container">
           <Navbar.Brand href="#home">
-            <Logo />
+            {/*<Logo />*/}
+            <Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -63,16 +61,10 @@ const Header = () => {
                     <a href="/dashboard">Dashboard</a>
                     <div className="underline"></div>
                   </li>
-                  <li className={router.pathname==="/profile/edit"?"active-link":""}>
-                    <a href="/profile/edit">My Profile</a>
-                    <div className="underline"></div>
-                  </li>
-                  {state?.userType&&state?.userType===3||state?.userType===2?
-                  <li className={router.pathname==="/user/list"?"active-link":""}>
-                    <a href="/user/list">User List</a>
-                    <div className="underline"></div>
-                  </li>
-                      :""}
+                  {/*<li className={router.pathname==="/profile/edit"?"active-link":""}>*/}
+                  {/*  <a href="/profile/edit">My Profile</a>*/}
+                  {/*  <div className="underline"></div>*/}
+                  {/*</li>*/}
                   <li className={router.pathname==="/settings/changepassword"?"active-link":""}>
                     <a href="/settings/changepassword">Change Password</a>
                     <div className="underline"></div>

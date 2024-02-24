@@ -4,7 +4,11 @@ import Link from 'next/link';
 import Layout from '../../layout/main';
 import { useRouter } from 'next/router'
 import {authService} from "../../services/authService";
-import { toast, ToastContainer } from 'react-nextjs-toast'
+import { toast, ToastContainer } from 'react-nextjs-toast';
+import { firebase } from '../../api/firebaseApp';
+import { uiConfig } from '../../config/firebaseAuthUI.config';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 
 var mailValidation =
   /(([a-zA-Z0-9\-?\.?]+)@(([a-zA-Z0-9\-_]+\.)+)([a-z]{2,3}))+$/;
@@ -36,6 +40,7 @@ export function validatePassword(password) {
 }
 
 export default function Login() {
+  const authConfig = uiConfig(firebase);
   const router = useRouter()
   const [state, setState] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -137,6 +142,7 @@ console.log("login process",process.env)
                   <h3>Sign in</h3>
                   <p>Enter your email & password</p>
                 </div>
+              <StyledFirebaseAuth uiConfig={authConfig} firebaseAuth={firebase.auth()} />
                 <div
                   className={`form-group ${state.emailError ? 'error' : ''}`}
                 >

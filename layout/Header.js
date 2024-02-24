@@ -1,10 +1,10 @@
 import {useState, useEffect, useReducer} from 'react';
-import { Logo } from '../public/Svg';
+// import { Logo } from '../public/Svg';
 import { Navbar, Nav, Link } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router'
 import {manageSession,sessionSignOut} from "../api/firebaseApp";
-import Image from "next/image";
+// import Image from "next/image";
 
 const Header = () => {
   let [bgcolor, setBgcolor] = useState(1);
@@ -49,7 +49,7 @@ const Header = () => {
         <div className="container navbar-container">
           <Navbar.Brand href="#home">
             {/*<Logo />*/}
-            <Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>
+            {/*<Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>*/}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 

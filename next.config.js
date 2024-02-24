@@ -1,6 +1,6 @@
 module.exports = {
   // basePath: process.env.BASE_PATH,
-  // output: 'export',
+  output: 'export',
   reactStrictMode: false,
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,

@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router'
 import {manageSession,sessionSignOut} from "../api/firebaseApp";
 // import Image from "next/image";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   let [bgcolor, setBgcolor] = useState(1);
@@ -37,6 +39,7 @@ const Header = () => {
   const handleLogout = () => {
     let res = sessionSignOut();
     if(res){
+      toast("Logout Successfully!");
       router.push('/auth/login', undefined, { shallow: true })
     }
   }
@@ -52,7 +55,20 @@ const Header = () => {
             {/*<Image src={"/images/logo.png"} alt={"Logo"} width={50} height={50}/>*/}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
+          <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+          />
+          {/* Same as */}
+          <ToastContainer />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <div className="navbar-container">
@@ -65,10 +81,10 @@ const Header = () => {
                   {/*  <a href="/profile/edit">My Profile</a>*/}
                   {/*  <div className="underline"></div>*/}
                   {/*</li>*/}
-                  <li className={router.pathname==="/settings/changepassword"?"active-link":""}>
-                    <a href="/settings/changepassword">Change Password</a>
-                    <div className="underline"></div>
-                  </li>
+                  {/*<li className={router.pathname==="/settings/changepassword"?"active-link":""}>*/}
+                  {/*  <a href="/settings/changepassword">Change Password</a>*/}
+                  {/*  <div className="underline"></div>*/}
+                  {/*</li>*/}
                   {/*<li>*/}
                   {/*  <a href="#">Settings</a>*/}
                   {/*  <div className="underline"></div>*/}

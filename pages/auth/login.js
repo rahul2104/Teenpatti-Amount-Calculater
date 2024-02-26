@@ -93,29 +93,29 @@ export default function Login() {
     return validate;
   };
 
-  const loginSubmit = async (e) => {
-    e.preventDefault();
-    if (handleValidationLogin()) {
-        //alert('login');
-        let params={
-          email:state.email,
-          password:state.password,
-          deviceTypeID:"3",
-          deviceID:"fdsfdsf",
-          deviceToken:"asfsaf"
-        }
-      console.log("params",params);
-      let data =  await authService.login(params);
-        console.log("data",data);
-      if (data.statusCode === 1) {
-        sessionStorage.setItem('accessToken', data.responseData.accessToken);
-        toast.notify(data.responseData.message,{"duration":3,type:"success",title:"Success!!"})
-        router.push('/dashboard', undefined, { shallow: true })
-      } else{
-        toast.notify(data.error.responseMessage,{"duration":3,type:"error",title:"Error!!"})
-      }
-    }
-  };
+  // const loginSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (handleValidationLogin()) {
+  //       //alert('login');
+  //       let params={
+  //         email:state.email,
+  //         password:state.password,
+  //         deviceTypeID:"3",
+  //         deviceID:"fdsfdsf",
+  //         deviceToken:"asfsaf"
+  //       }
+  //     console.log("params",params);
+  //     let data =  await authService.login(params);
+  //       console.log("data",data);
+  //     if (data.statusCode === 1) {
+  //       sessionStorage.setItem('accessToken', data.responseData.accessToken);
+  //       toast.notify(data.responseData.message,{"duration":3,type:"success",title:"Success!!"})
+  //       router.push('/dashboard', undefined, { shallow: true })
+  //     } else{
+  //       toast.notify(data.error.responseMessage,{"duration":3,type:"error",title:"Error!!"})
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     manageSession()

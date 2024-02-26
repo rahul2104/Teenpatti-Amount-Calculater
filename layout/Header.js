@@ -81,10 +81,10 @@ const Header = () => {
                   {/*  <a href="/profile/edit">My Profile</a>*/}
                   {/*  <div className="underline"></div>*/}
                   {/*</li>*/}
-                  <li className={router.pathname==="/settings/changepassword"?"active-link":""}>
-                    <a href="/settings/changepassword">Change Password</a>
-                    <div className="underline"></div>
-                  </li>
+                  {/*<li className={router.pathname==="/settings/changepassword"?"active-link":""}>*/}
+                  {/*  <a href="/settings/changepassword">Change Password</a>*/}
+                  {/*  <div className="underline"></div>*/}
+                  {/*</li>*/}
                   {/*<li>*/}
                   {/*  <a href="#">Settings</a>*/}
                   {/*  <div className="underline"></div>*/}

@@ -44,13 +44,12 @@ export default function Index() {
     const filterStatus = (e) => {
         console.log("e",e.target);
         setState({ ...state, status: e.target.value, pageNo: 1 }, () => {
-            getUserList();
+
         });
     };
 
     return (
         <Layout notFooter={false}>
-            {console.log("roomList",roomList['-NrTiW76EPn4viMcmcWS'])}
             <div className="edit-page-wrapper">
                 <section className="banner_area"></section>
                 <div className="box_1620 container">

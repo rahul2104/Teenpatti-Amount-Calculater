@@ -3,8 +3,9 @@ import Head from 'next/head';
 import { Fragment } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import {ToastContainer} from "react-nextjs-toast";
+import {ToastContainer} from "react-toastify";
 import getConfig from 'next/config'
+import SideNav from "./SideNav";
 
 const {publicRuntimeConfig,serverRuntimeConfig} = getConfig()
 const {BASE_PATH,AUTHORISATION} = publicRuntimeConfig
@@ -29,6 +30,7 @@ export default function Layout ({title = "Teen Patti", notFooter=false , notHead
 
         {/** Add toast component **/}
       <ToastContainer align={"right"} position={"bottom"}/>
+        {/*<SideNav />*/}
       <main>{children}</main>
       {notFooter ? '' : <Footer isAppPage={isAppPage} />}
     </Fragment>
